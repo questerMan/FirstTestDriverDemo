@@ -1,0 +1,94 @@
+//
+//  PrefixHeader.pch
+//  LiXinDriverTest
+//
+//  Created by lixin on 16/11/6.
+//  Copyright © 2016年 陆遗坤. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// 屏幕尺寸大小
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
+
+#define VIEW_W self.view.frame.size.width
+#define VIEW_H self.view.frame.size.height
+
+#define SELF_W self.frame.size.width
+#define SELF_H self.frame.size.height
+
+//1.用户首次登录
+#define USER_FIRST_LOGIN @"firstLogin"
+//2.YYCache
+#define ALL_CACHE_DATA @"CacheData"
+//3.界面默认颜色（导航栏背景色）
+#define DEFAULT_COLOR RGBAlpha(0, 0, 0, 1)
+#define DEFAULT_COLOR1 RGBAlpha(174, 204, 12, 1)
+#define DEFAULT_COLOR2 RGBAlpha(128, 128, 128, 1)
+#define DEFAULT_COLOR3 RGBAlpha(255, 255, 255, 1)
+
+// 适配
+#define MATCHSIZE_PX(px) ([@"iPad" isEqualToString:[[UIDevice currentDevice] model]]? px*(SCREEN_W/750) : (SCREEN_W == 414)? px*414/750.0 : (SCREEN_W == 375)? px*0.5 : px*320/750.0)
+
+// 适配px  (6   6s  屏幕缩小了四倍[UIScreen mainScreen].scale/2／2)
+#define MATCHSIZE(px) ([@"iPad" isEqualToString:[[UIDevice currentDevice] model]]? px*(SCREEN_W/750) : (SCREEN_W == 414)? px*0.552 : (SCREEN_W == 375)? px*((([UIScreen mainScreen].scale/2))/2) : px*0.427)
+
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
+//=======颜色=======
+#define RGBAlpha(r, g, b, a)     [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:(a)]
+
+//=======设备标示=======
+#define ftdeviceIdentifier [[UIDevice currentDevice].identifierForVendor UUIDString]
+
+//=======设备系统版本号=======
+#define deviceVsersion  [UIDevice currentDevice].systemVersion
+
+//=======缓存=======
+#define UserDefault [NSUserDefaults  standardUserDefaults]
+
+//=======高德地图KEY=======
+#define AMMAP_KEY @"2613a5847d406aa9df90c8103481e94a"
+
+// 本地类的导入
+#import "SlideMenuController.h"
+#import "UIViewController+SlideMenuControllerOC.h"
+
+#import "RPRingedPages.h"
+
+#import "MainVC.h"
+#import "PublicTool.h"
+#import "LeftVC.h"
+#import "RootVC.h"
+#import "LeftHeaderUserCell.h"
+#import "CacheClass.h"
+#import "GuideView.h"
+#import "UIViewController+HUD.h"
+#import "UIView+Frame.h"
+#import "LoginVC.h"
+#import "AlertView.h"
+#import "AppDelegate.h"
+//测试用
+#import "LogTest.h"
+
+#import "HeaderScrollView.h"
+#import "DownLoadMapVC.h"
+
+#import "MapViewController.h"
+
+// 第三方类的导入
+#import <YYCache/YYCache.h>
+#import "UIImageView+WebCache.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <objc/runtime.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+#import <AMapNaviKit/AMapNaviKit.h>
+
+#endif /* PrefixHeader_pch */

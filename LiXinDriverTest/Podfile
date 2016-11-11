@@ -1,0 +1,20 @@
+platform :ios, '7.0'
+use_frameworks!
+
+target ‘LiXinDriverTest’ do 
+     pod 'AFNetworking', '~> 2.6'
+     pod "ReactiveCocoa"
+     pod 'SDWebImage'
+     pod 'MJRefresh', '~> 2.4.11'
+     pod 'MBProgressHUD', '~> 0.9.2'
+
+
+     pod 'AMapNavi' #导航 SDK
+     pod 'AMapLocation'  #定位SDK
+     pod 'AMapSearch'  #搜索服务SDK
+
+     pod 'Masonry', '~> 0.6.1'
+     pod 'YYCache', '~> 0.9.4'
+
+end
+
