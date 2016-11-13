@@ -1,7 +1,13 @@
-platform :ios, '7.0'
+platform :ios, ‘8.0’
 use_frameworks!
 
-target ‘LiXinDriverTest’ do 
+target ‘LiXinDriverTest’ do
+    
+    
+     #环信聊天（包含 SDWebImage MBProgressHUD MJRefresh MWPhotoBrowser）
+     #pod 'Hyphenate_CN'
+     #pod 'EaseUI', :git => 'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
+    
      pod 'AFNetworking', '~> 2.6'
      pod "ReactiveCocoa"
      pod 'SDWebImage'
@@ -15,6 +21,9 @@ target ‘LiXinDriverTest’ do
 
      pod 'Masonry', '~> 0.6.1'
      pod 'YYCache', '~> 0.9.4'
+
+     
+
 
 end
 

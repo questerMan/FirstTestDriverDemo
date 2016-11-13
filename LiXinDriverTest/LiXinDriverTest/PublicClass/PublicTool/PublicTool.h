@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 //通知
 typedef void (^NotificationBlock)(NSNotification *notify);
+//返回代码块
+typedef void (^BackBlock) (void);
 
 
 @interface PublicTool : NSObject
@@ -109,4 +111,19 @@ typedef void (^NotificationBlock)(NSNotification *notify);
  *  @return 转换后的字符串
  */
 + (NSString *)UTF8String:(NSString *)str;
+
+
+//返回按钮
+@property (nonatomic, copy) BackBlock backBlock;
+
+/**
+*  　创建返回按钮
+*
+*  @param viewController 要创建按钮的页面
+*
+*  @param backBlock 执行方法
+*/
+-(void)creatLeftBackItemToMainVCWithViewController:(UIViewController *)viewController
+                                      andBackBlock:(BackBlock) backBlock;
+
 @end

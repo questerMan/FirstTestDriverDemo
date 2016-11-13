@@ -99,17 +99,7 @@
     
     //改变statusBar的前景色 1. View controller-based status bar appearance  为NO  2. Status bar style 为 Opaque black style
     
-    //不透明
-    self.navigationController.navigationBar.translucent = NO;
-    
-    //背景颜色
-    [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
-    
-    //显示的颜色
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    
-    //导航栏字体颜色
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [self changeNavigation];
     
     //创建左侧点击按钮
     [self setNavigationBarItem];
@@ -120,7 +110,8 @@
 
 -(void)rightOnclick:(UIBarButtonItem *)itemBtn{
     NSLog(@"右上角按钮");
-      [self.navigationController pushViewController:[[MapViewController alloc] init] animated:YES];
+    [self.navigationController pushViewController:[[ChatIMessageVC alloc] init] animated:YES];
+
 }
 
 

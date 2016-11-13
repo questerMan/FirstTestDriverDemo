@@ -73,10 +73,12 @@
 //测试用
 #import "LogTest.h"
 
-#import "HeaderScrollView.h"
-#import "DownLoadMapVC.h"
 
+#import "DownLoadMapVC.h"
+#import "UIViewController+Navigation.h"
 #import "MapViewController.h"
+#import "ChatIMessageVC.h"
+
 
 // 第三方类的导入
 #import <YYCache/YYCache.h>

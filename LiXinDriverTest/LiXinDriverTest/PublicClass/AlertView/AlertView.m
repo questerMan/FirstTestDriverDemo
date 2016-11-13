@@ -15,7 +15,7 @@
 //}
 
 @property (nonatomic,strong) LoginVC *loginVC;
-@property (nonatomic,strong) HeaderScrollView *scrollView;
+
 @property (nonatomic,strong) DownLoadMapVC *downLoadMap;
 @property (nonatomic,strong) MapViewController *mapVC;
 
@@ -44,13 +44,8 @@
     }
     return _mapVC;
 }
--(HeaderScrollView *)scrollView{
-    if (!_scrollView) {
-        _scrollView = [[HeaderScrollView alloc] init];
-        _scrollView.view.frame = CGRectMake(0, 0, SELF_W, SELF_H);
-    }
-    return _scrollView;
-}
+
+
 
 -(DownLoadMapVC *)downLoadMap{
     if (!_downLoadMap) {
@@ -86,10 +81,6 @@
         
         if (alertViewType == AlertViewTypeGetLogin) {
 
-            
-        }
-        else if (alertViewType == AlertViewTypeGetHeaderScroll) {
-            
             
         }
         else if (alertViewType == AlertViewTypeGetDownLoad) {
@@ -144,14 +135,6 @@
         
 
         [window addSubview:self];
-        
-    }
-    
-    else if (_addAlertViewType == AlertViewTypeGetHeaderScroll) {
-      
-        [self animatedAlertViewTypeOne];
-
-        [self.alertView addSubview:self.scrollView.view];
         
     }
     

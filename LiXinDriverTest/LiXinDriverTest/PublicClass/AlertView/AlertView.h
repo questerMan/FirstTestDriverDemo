@@ -15,7 +15,6 @@ typedef enum {
 //    AlertViewTypeGetCar //
     
     AlertViewTypeGetLogin,
-    AlertViewTypeGetHeaderScroll,
     AlertViewTypeGetDownLoad,
     AlertViewTypeGetMap
 }AlertViewType;

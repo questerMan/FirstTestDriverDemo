@@ -33,18 +33,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"－－－－－－－－－%f",MATCHSIZE(SCREEN_W));
-    //头部滚动展示视图
-    [self creatScrollView];
+   
+    
   
 }
 
-#pragma mark - 头部滚动展示视图
--(void)creatScrollView{
-    AlertView * alertView = [[AlertView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, MATCHSIZE(300)) AndAddAlertViewType:AlertViewTypeGetHeaderScroll];
-    [alertView alertViewShow];
-    [self.view addSubview:alertView];
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

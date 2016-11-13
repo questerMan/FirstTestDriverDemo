@@ -19,7 +19,11 @@
 @end
 
 @implementation LeftVC
-
+// 跳回主页面代理
+-(void)pusMainViewController{
+    UINavigationController *nac = [[UINavigationController alloc] initWithRootViewController:[[MainVC alloc] init]];
+    [self.slideMenuController changeMainViewController:nac close:YES];
+}
 -(NSMutableArray *)arrayData{
     if (!_arrayData) {
         _arrayData = [NSMutableArray array];
@@ -71,16 +75,11 @@
     [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
 //        AlertView *alert = [AlertView shareInstanceWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H) AndAddAlertViewType:AlertViewTypeGetMap];
 //        [alert alertViewShow];
-        
-        
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        
-        SlideMenuController *slider = (SlideMenuController *)window.rootViewController;;
 
-        [slider presentViewController:[[MapViewController alloc] init] animated:YES completion:^{
-            [self closeLeft];
-        }];
-
+        MapViewController *map = [[MapViewController alloc] init];
+        map.delegate = self;
+        UINavigationController *nac = [[UINavigationController alloc] initWithRootViewController:map];
+        [self.slideMenuController changeMainViewController:nac close:YES];
         
     }];
 

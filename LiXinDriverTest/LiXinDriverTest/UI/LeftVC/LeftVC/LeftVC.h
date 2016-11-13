@@ -8,6 +8,13 @@
 
 #import "ViewController.h"
 
-@interface LeftVC : ViewController
+@protocol LeftVCProtocol <NSObject>
+
+@required
+-(void)pusMainViewController;
+
+@end
+
+@interface LeftVC : ViewController<LeftVCProtocol>
 
 @end

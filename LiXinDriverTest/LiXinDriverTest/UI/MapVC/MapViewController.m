@@ -8,7 +8,7 @@
 
 #import "MapViewController.h"
 
-@interface MapViewController ()<MAMapViewDelegate,AMapLocationManagerDelegate,AMapSearchDelegate,UITextFieldDelegate>
+@interface MapViewController ()<MAMapViewDelegate,AMapLocationManagerDelegate,AMapSearchDelegate,UITextFieldDelegate,SlideMenuControllerDelegate>
 //地图
 @property (nonatomic, strong) MAMapView *mapView;
 //定位
@@ -34,9 +34,12 @@
 @property (nonatomic, strong) PublicTool *tool;
 
 @property (nonatomic, strong) UINavigationController *navController;
+
 @end
 
 @implementation MapViewController
+
+
 
 -(UITextField *)startF{
     if (!_startF) {
@@ -103,28 +106,34 @@
     return _mapView;
 }
 
+-(PublicTool *)tool{
+    if (!_tool) {
+        _tool = [PublicTool shareInstance];
+    }
+    return _tool;
+}
+
 -(void)viewWillAppear:(BOOL)animated{
-  
-   
-    //创建navbar
-    UINavigationBar *nav = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, MATCHSIZE(375*2), MATCHSIZE(149.88))];
-    //创建navbaritem
-    UINavigationItem *NavTitle = [[UINavigationItem alloc] initWithTitle:@"详细介绍"];
-    NavTitle.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"按钮" style:UIBarButtonItemStyleDone target:self action:nil];
-    [nav pushNavigationItem:NavTitle animated:YES];
+
+    [self changeNavigation];
     
-    nav.backgroundColor = [UIColor redColor];
-    
-    [self.view addSubview:nav];
-   
+    //不会循环引用
+    __weak __typeof(self)weakSelf = self;
+
+    //创建左上角返回按钮
+    [self.tool creatLeftBackItemToMainVCWithViewController:weakSelf andBackBlock:^{
+        if (weakSelf.delegate != nil && [weakSelf.delegate respondsToSelector:@selector(pusMainViewController)]) {
+            [weakSelf.delegate pusMainViewController];
+        }
+    }];
 
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    _tool = [PublicTool shareInstance];
+        
+    self.slideMenuController.delegate = self;
     
     self.selectePlace = YES;//默认出发地
     
@@ -137,19 +146,25 @@
     [self initF];
     
     [self creatCenterIMG];
+    
+    
+    
    
     //测试按钮🔘添加地图页面
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(MATCHSIZE(30),SCREEN_H - MATCHSIZE(120), MATCHSIZE(60), MATCHSIZE(100));
+    btn.frame = CGRectMake(MATCHSIZE(30),SCREEN_H - MATCHSIZE(300), MATCHSIZE(60), MATCHSIZE(100));
     [btn setBackgroundImage:[UIImage imageNamed:@"off_Map"] forState:UIControlStateNormal];
+
     [self.mapView addSubview:btn];
     [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         //        AlertView *alert = [AlertView shareInstanceWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H) AndAddAlertViewType:AlertViewTypeGetMap];
         //        [alert alertViewShow];
 
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
+        if (_delegate != nil && [_delegate respondsToSelector:@selector(pusMainViewController)]) {
+            [_delegate pusMainViewController];
+        }
+        NSLog(@"点击地图返回按钮");
+
     }];
 }
 -(void)creatCenterIMG{
@@ -177,9 +192,9 @@
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0 ; i<arr.count; i++) {
         
-        UIBarButtonItem *itemBtn = [[UIBarButtonItem alloc] initWithTitle:arr[i] style:UIBarButtonItemStylePlain target:self action:@selector(itembtnOnclick:)];
-        itemBtn.tag = 10+i;
-        [array addObject:itemBtn];
+//        UIBarButtonItem *itemBtn = [[UIBarButtonItem alloc] initWithTitle:arr[i] style:UIBarButtonItemStylePlain target:self action:@selector(itembtnOnclick:)];
+//        itemBtn.tag = 10+i;
+//        [array addObject:itemBtn];
         
     }
     
@@ -593,6 +608,28 @@
         self.selectePlace = YES;
     }
     
+}
+
+
+#pragma mark SlideMenuControllerDelegate 侧滑代理方法
+//左栏将要打开
+-(void)leftWillOpen{
+    
+}
+//左栏已经打开
+-(void)leftDidOpen{
+    
+    [self addLeftGestures];//添加滑动手势
+    
+}
+//左边将要关闭
+-(void)leftWillClose{
+    
+}
+//左边已经关闭
+-(void)leftDidClose{
+    [self removeLeftGestures];//移除滑动手势
+    [self addLeftGestures];//添加左边滑动式图
 }
 
 @end

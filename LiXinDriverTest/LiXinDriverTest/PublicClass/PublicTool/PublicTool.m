@@ -8,6 +8,11 @@
 
 #import "PublicTool.h"
 
+@interface PublicTool()
+
+
+@end
+
 @implementation PublicTool
 /** 单例 */
 + (PublicTool *)shareInstance{
@@ -195,5 +200,18 @@
 {
     NSString *changedStr = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return changedStr;
+}
+#pragma mark - - 创建左上角返回按钮
+-(void)creatLeftBackItemToMainVCWithViewController:(UIViewController *)viewController
+                                      andBackBlock:(BackBlock) backBlock{
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[self scaleToSize:[UIImage imageNamed:@"back"] size:CGSizeMake(MATCHSIZE_PX(60   ), MATCHSIZE_PX(60))] style:UIBarButtonItemStyleDone target:self action:@selector(pusMainVC)];
+    viewController.navigationItem.leftBarButtonItem = backItem;
+    
+    _backBlock = backBlock;
+    
+}
+-(void)pusMainVC{
+    
+    self.backBlock();
 }
 @end

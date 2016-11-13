@@ -10,4 +10,6 @@
 
 @interface MapViewController : UIViewController
 
+@property (weak, nonatomic) id<LeftVCProtocol> delegate;
+
 @end

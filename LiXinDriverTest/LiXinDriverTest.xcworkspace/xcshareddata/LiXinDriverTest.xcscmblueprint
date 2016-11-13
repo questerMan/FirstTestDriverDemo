@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E68A0453841BC34EFD73A3478998363A38FFCD63",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "16B55DB7CCB3E0E6498E7C9580CBF589313E68BC" : 9223372036854775807,
+    "E68A0453841BC34EFD73A3478998363A38FFCD63" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9A02AAFD-6157-4C5F-9A50-2C3812BBEB93",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "16B55DB7CCB3E0E6498E7C9580CBF589313E68BC" : "",
+    "E68A0453841BC34EFD73A3478998363A38FFCD63" : "LiXinDriverTest\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LiXinDriverTest",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LiXinDriverTest.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/questerMan\/FirstTestDriverDemo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "16B55DB7CCB3E0E6498E7C9580CBF589313E68BC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/questerMan\/-LiXinDriverTest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E68A0453841BC34EFD73A3478998363A38FFCD63"
+    }
+  ]
+}

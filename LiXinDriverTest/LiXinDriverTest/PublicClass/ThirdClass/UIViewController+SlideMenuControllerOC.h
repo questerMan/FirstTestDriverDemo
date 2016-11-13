@@ -23,4 +23,5 @@
 -(void)closeLeftView;
 -(void)addLeftGestures;
 -(void)removeLeftGestures;
+
 @end
